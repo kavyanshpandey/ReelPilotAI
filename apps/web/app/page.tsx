@@ -157,7 +157,7 @@ export default function Dashboard() {
     }
   }
   const clusters = analysis
-      ? analysis.clusters.slice(0, 5).map((cluster, index) => ({
+      ? analysis.clusters.map((cluster, index) => ({
         id: cluster.id,
         source: cluster,
         rank: String(cluster.rank).padStart(2, "0"),
@@ -171,7 +171,7 @@ export default function Dashboard() {
       }))
     : sampleClusters;
   const commentCount = analysis?.comment_count ?? 482;
-  const clusterCount = analysis?.clusters.length ?? 14;
+  const clusterCount = analysis?.clusters.length ?? clusters.length;
 
   function scrollTo(id: string) {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
